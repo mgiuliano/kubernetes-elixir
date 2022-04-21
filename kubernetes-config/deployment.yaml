@@ -1,0 +1,35 @@
+kind: Service
+apiVersion: v1
+
+metadata:
+  name: hello-nodes
+  namespace: default
+spec:
+  clusterIP: None
+  selector:
+    app: hello
+  ports:
+    - name: epmd
+      port: 4369
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: hello
+  namespace: default
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: hello-server
+          image: gcr.io/bidder-dev-340710/hello:v1.12
+          ports:
+            - containerPort: 8080

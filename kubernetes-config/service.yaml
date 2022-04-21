@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+
+metadata:
+  name: hello
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    app: hello
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080

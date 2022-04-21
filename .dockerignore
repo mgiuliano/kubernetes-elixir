@@ -1,0 +1,11 @@
+/_build/
+/cover/
+/deps/
+/doc/
+/kubernetes-config/
+/test/
+/.fetch
+*.ez
+hello-*.tar
+erl_crash.dump
+README.md
